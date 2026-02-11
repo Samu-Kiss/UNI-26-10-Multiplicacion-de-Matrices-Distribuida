@@ -10,32 +10,32 @@ The main objective is to **measure and compare the execution time** of square ma
 
 The project is organized by physical node (laptop):
 
-├── LaptopNode0/
-│ ├── matmul.c
-│ ├── matmul
-│ ├── hostfile
-│ ├── benchmark_mpi.pl
-│ ├── results.csv
-│ └── Resultados/
-│ ├── matricesde200_np4.csv
-│ ├── matricesde200_np20.csv
-│ ├── matricesde400_np4.csv
-│ ├── matricesde400_np20.csv
-│ ├── matricesde800_np4.csv
-│ ├── matricesde800_np20.csv
-│ ├── matricesde1600_np4.csv
-│ ├── matricesde1600_np20.csv
-│ ├── matricesde3200_np4.csv
-│ └── matricesde3200_np20.csv
-│
-├── LaptopNode1/
-│ └── (copies of the executable and required files)
-├── LaptopNode2/
-│ └── (copies of the executable and required files)
-├── LaptopNode3/
-│ └── (copies of the executable and required files)
-├── LaptopNode4/
-│ └── (copies of the executable and required files)
+├── LaptopNode0/  
+│ ├── matmul.c  
+│ ├── matmul  
+│ ├── hostfile  
+│ ├── benchmark_mpi.pl  
+│ ├── results.csv  
+│ └── Resultados/  
+│ ├── matricesde200_np4.csv  
+│ ├── matricesde200_np20.csv  
+│ ├── matricesde400_np4.csv  
+│ ├── matricesde400_np20.csv  
+│ ├── matricesde800_np4.csv  
+│ ├── matricesde800_np20.csv  
+│ ├── matricesde1600_np4.csv  
+│ ├── matricesde1600_np20.csv  
+│ ├── matricesde3200_np4.csv  
+│ └── matricesde3200_np20.csv  
+│  
+├── LaptopNode1/  
+│ └── (copies of the executable and required files)  
+├── LaptopNode2/  
+│ └── (copies of the executable and required files)  
+├── LaptopNode3/  
+│ └── (copies of the executable and required files)  
+├── LaptopNode4/  
+│ └── (copies of the executable and required files)  
 
 
 📌 **Note:**
