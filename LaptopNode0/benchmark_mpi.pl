@@ -3,13 +3,13 @@ use strict;
 use warnings;
 
 # ---------- CONFIG ----------
-my $hostfile = "hostfile";      # tu hostfile de MPI
-my $exe      = "./matmul";      # tu binario compilado
+my $hostfile = "hostfile";      # hostfile de MPI
+my $exe      = "./matmul";      # binario compilado
 my @sizes    = (200, 400, 800, 1600, 3200);
 my $runs     = 30;
 my @nps      = (20, 4);         # primero np=20 y luego np=4
 
-# ---------- PRECHECKS ----------
+# ---------- CONFIRMACIONES PREVIAS ----------
 die "ERROR: hostfile '$hostfile' not found\n" unless -e $hostfile;
 die "ERROR: executable '$exe' not found\n"     unless -e $exe;
 die "ERROR: executable '$exe' not executable (run: chmod +x $exe)\n" unless -x $exe;
@@ -17,10 +17,10 @@ die "ERROR: executable '$exe' not executable (run: chmod +x $exe)\n" unless -x $
 sub run_once {
     my ($np, $N) = @_;
 
-    # Command: mpirun -np <np> --hostfile hostfile ./matmul N
+    # Comando: mpirun -np <np> --hostfile hostfile ./matmul N
     my $cmd = "mpirun -np $np --hostfile $hostfile $exe $N";
 
-    # Captura stdout+stderr (porque OpenMPI a veces manda warnings)
+    # Captura stdout+stderr
     my $out = `$cmd 2>&1`;
     my $rc  = $? >> 8;
 
@@ -35,7 +35,7 @@ sub run_once {
         die "ERROR: no numeric time found (np=$np, N=$N)\n$out\n";
     }
 
-    # El tiempo debe ser el ÚLTIMO número impreso por tu programa
+    # El tiempo debe ser el ÚLTIMO número impreso por el programa
     return $nums[-1] + 0.0;
 }
 
@@ -46,16 +46,15 @@ for my $np (@nps) {
         open(my $fh, ">", $filename)
           or die "ERROR: cannot write '$filename': $!\n";
 
-        # header CSV
         print $fh "run,time_seconds\n";
 
         for my $r (1..$runs) {
             my $t = run_once($np, $N);
 
-            # imprimir progreso en consola
+            # imprime progreso en consola
             printf "N=%d np=%d run=%d time=%.6f\n", $N, $np, $r, $t;
 
-            # guardar en archivo
+            # guarda en archivo
             printf $fh "%d,%.6f\n", $r, $t;
         }
 
