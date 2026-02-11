@@ -5,7 +5,7 @@ use warnings;
 # ---------- CONFIG ----------
 my $hostfile = "hostfile";      # tu hostfile de MPI
 my $exe      = "./matmul";      # tu binario compilado
-my @sizes    = (200, 400, 800, 1600);
+my @sizes    = (200, 400, 800, 1600, 3200);
 my $runs     = 30;
 my @nps      = (20, 4);         # primero np=20 y luego np=4
 
